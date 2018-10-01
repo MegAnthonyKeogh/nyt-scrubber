@@ -3,6 +3,7 @@ import Jumbotron from "../Jumbotron";
 import { Col, Row, Container } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
 import {List, ListItem } from "../List";
+//import API from "../../utils";
 
 class Search extends Component {
 
@@ -14,6 +15,19 @@ class Search extends Component {
         saved: "",
 
     }
+
+
+    // componentDidMount() {
+    //     this.loadArticles();
+    //   }
+    
+    //   loadArticles = () => {
+    //     API.getArticles()
+    //       .then(res =>
+    //         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+    //       )
+    //       .catch(err => console.log(err));
+    //   };
 
     render() {
         return ( 
@@ -62,7 +76,11 @@ class Search extends Component {
              </Jumbotron> 
              <div>
              <List>
-                 <p>list items go here.</p>
+             <p>list items go here.</p>
+                 <ListItem>
+                     <p>individual items here</p>
+                 </ListItem>
+                 
              </List>
              </div>
               <Jumbotron>

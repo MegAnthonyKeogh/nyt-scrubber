@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../Jumbotron";
 import { Input, TextArea, FormBtn } from "../Form";
+import {List, ListItem } from "../List";
 
 class Search extends Component {
 
@@ -52,7 +53,30 @@ class Search extends Component {
             Submit Book 
             </FormBtn> 
             </form> 
-            </div>
+            
+             <Jumbotron>
+             < h1 > Results </h1> 
+             </Jumbotron> 
+             <div>
+             <List>
+                 <p>list items go here.</p>
+             </List>
+             </div>
+              <Jumbotron>
+              < h1 > Saved Articles </h1> 
+              </Jumbotron> 
+              <div>
+              <List>
+                  <p>list items go here.</p>
+              </List>
+              </div>
+              </div>
+              
+             
+             
+
+
+
         )
     }
 }

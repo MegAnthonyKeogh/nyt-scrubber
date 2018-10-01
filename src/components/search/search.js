@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../Jumbotron";
+import { Col, Row, Container } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
 import {List, ListItem } from "../List";
 
@@ -16,7 +17,9 @@ class Search extends Component {
 
     render() {
         return ( 
-            <div>
+            <Container fluid>
+        <Row>
+          <Col size="md-12">
             <Jumbotron>
             < h1 > New York Times Article Scrubber and Saver </h1> 
             </Jumbotron> 
@@ -50,7 +53,7 @@ class Search extends Component {
             //disabled={!(this.state.search && this.state.title)}
             // onClick={this.handleFormSubmit}
             >
-            Submit Book 
+            Submit 
             </FormBtn> 
             </form> 
             
@@ -70,7 +73,9 @@ class Search extends Component {
                   <p>list items go here.</p>
               </List>
               </div>
-              </div>
+              </Col>
+              </Row>
+              </Container>
               
              
              

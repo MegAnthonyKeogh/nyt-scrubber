@@ -3,57 +3,72 @@ import Jumbotron from "../Jumbotron";
 import { Col, Row, Container } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
 import {List, ListItem } from "../List";
-//import API from "../../utils";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Search from "../search";
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
-
-// const App = () => (
-//   <Router>
-//     <div>
-//       <Nav />
-//       <Switch>
-//         <Route exact path="/" component={Search} />
-//         <Route exact path="/Search" component={Search} />
-//       </Switch>
-//     </div>
-//   </Router>
-// );
-
-// export default App;
-
-//
 
 class Search extends Component {
 
     state = {
-        data: null
+        data: [],
+        response: null,
+        headline: "",
+        byline: "",
+        web_url: "",
         // search: "",
         // startYear: "",
         // endYear: "",
         // saved: "",
 
     }
- 
-          componentDidMount() {
-              // Call our fetch function below once the component mounts
-            this.callBackendAPI()
-              .then(res => this.setState({ data: res.express }))
-              .catch(err => console.log(err));
-          }
-            // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-          callBackendAPI = async () => {
-            const response = await fetch('/express_backend');
-            const body = await response.json();
-        
-            if (response.status !== 200) {
-              throw Error(body.message) 
-            }
-            return body;
-          };
-        
-   
 
+    componentDidMount() {
+        this.loadArticles();
+        console.log("in didMount load articles");
+        // Call our fetch function below once the component mounts
+        // this.callBackendAPI()
+        // .then(res => {
+        //     console.log("In componentDidMount .then")
+        //     console.log(res)
+        //     this.setState({ data: res.data, headline: "", byline: "", web_url: "" })
+        // })
+        // .catch(err => {
+        //     console.log("in componentDidMount .catch")
+        //     console.log(err)
+        // });
+    }
+    
+    loadArticles = () => {
+        API.getArticles()
+        .then(res => 
+            this.setState({ articles: res.data, headline:"", byline:"", web_url: ""})
+        )
+            .catch(err => console.log(err))
+    }
+    // EJB
+    callBackendAPI = () => {
+      console.log("In callBackendAPI")
+      return fetch('/api/nyt')
+      .then(response => {
+          console.log("In callBackendAPI .then");
+          console.log(response);
+          if(response.status !== 200) {
+              console.log("In callBackendAPI .then, Response from API returend status code " + response.status);
+              return;
+          }
+          console.log("In callBackendAPI .then, returning data (promise)")
+          return response.json()
+    
+      })
+      .catch(function(error) {
+          console.log("In callBackendAPI .catch");
+          console.log('Request failed', error);
+          throw error;
+      });
+    }
+
+    
+    
 
     render() {
         return ( 
@@ -63,12 +78,12 @@ class Search extends Component {
             <Jumbotron>
             < h1 > New York Times Article Scrubber and Saver </h1> 
             // Render the newly fetched data inside of this.state.data 
-        <p className="App-intro">{this.state.data}</p>
+        
             </Jumbotron> 
            <form>
                <h3> Search Here </h3>
             <Input value = {
-                this.state.search
+                this.state.query
             }
             onChange = {
                 this.handleInputChange
@@ -76,12 +91,12 @@ class Search extends Component {
             search = "search"
             placeholder = "Title (required)" />
             <Input value = {
-                this.state.startYear
+                this.state.startyear
             }
             onChange = {
                 this.handleInputChange
             }
-            startYear = "start year"
+            startyear = "start year"
             placeholder = "start year (required)" />
             <TextArea value = {
                 this.state.endYear
@@ -89,7 +104,7 @@ class Search extends Component {
             onChange = {
                 this.handleInputChange
             }
-            endYear = "end year"
+            endyear = "end year"
             placeholder = "end year (Optional)" />
             <FormBtn
             //disabled={!(this.state.search && this.state.title)}
@@ -103,13 +118,20 @@ class Search extends Component {
              < h1 > Results </h1> 
              </Jumbotron> 
              <div>
+                 {this.state.data.length ? (
              <List>
-             <p>list items go here.</p>
-                 <ListItem>
-                     <p>individual items here</p>
-                 </ListItem>
-                 
-             </List>
+                 {this.state.data.map(data => (
+                      <ListItem key="NA">
+                     <strong>{data.headline} by {data.byline}</strong>
+                     <Link to={data.web_url}>Read the Story Here</Link>
+                      {/* <DeleteBtn onClick={() => this.delete(data_id)}/>  */}
+                     </ListItem>
+                 ))}
+                 </List>
+                 ) : (
+                     <h3>No Results to Display</h3>
+                 )}
+             
              </div>
               <Jumbotron>
               < h1 > Saved Articles </h1> 

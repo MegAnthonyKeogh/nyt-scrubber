@@ -67,6 +67,10 @@ class Search extends Component {
       });
     }
 
+    handleSave = (id) => {
+        console.log(`handleSave was clicked id=${id}`)
+        return;
+      }
     
     
 
@@ -117,22 +121,42 @@ class Search extends Component {
              <Jumbotron>
              < h1 > Results </h1> 
              </Jumbotron> 
-             <div>
-                 {this.state.data.length ? (
-             <List>
-                 {this.state.data.map(data => (
-                      <ListItem key="NA">
-                     <strong>{data.headline} by {data.byline}</strong>
-                     <Link to={data.web_url}>Read the Story Here</Link>
-                      {/* <DeleteBtn onClick={() => this.delete(data_id)}/>  */}
-                     </ListItem>
-                 ))}
-                 </List>
-                 ) : (
-                     <h3>No Results to Display</h3>
-                 )}
-             
-             </div>
+             <div className="App">
+        {
+          this.state.data.length ? (
+            <List>
+              {
+                this.state.data.map(data => (
+                  <ListItem key={data._id}>
+                    <strong>
+                      { `${data.headline.main} ${'byline' in data ? data.byline.original : ""}` }
+                    </strong>
+                    
+                    {
+                      /* 
+                      As the below is to go an external site, it should just be an <a> element
+                      You only need Link when you are using React Router.
+                      */
+                    }
+                    <a href={data.web_url}>Read the Story Here</a>
+                    {
+                      /* 
+                      There's no delete button here, rather there should be a SAVE button
+                      I don't know the setup of your component structure.  Below, I have handleSave
+                      as a method of this component class.  You may be passing it as a prop.
+                      */
+                    }
+                    <button onClick={() => this.handleSave(data._id)}>Save</button>
+
+                  </ListItem>
+                ))
+              }
+            </List>
+          ) : (
+            <h3>No Results to Display</h3>
+          )}
+      </div>
+   
               <Jumbotron>
               < h1 > Saved Articles </h1> 
               </Jumbotron> 

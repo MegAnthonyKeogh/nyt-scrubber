@@ -10,7 +10,7 @@ import API from "../../utils/API";
 class Search extends Component {
 
     state = {
-        data: [],
+        articles: [],
         response: null,
         headline: "",
         byline: "",
@@ -40,9 +40,10 @@ class Search extends Component {
     
     loadArticles = () => {
         API.getArticles()
-        .then(res => 
+        .then(res => {
+            console.log(res)
             this.setState({ articles: res.data, headline:"", byline:"", web_url: ""})
-        )
+        })
             .catch(err => console.log(err))
     }
     // EJB
@@ -123,13 +124,13 @@ class Search extends Component {
              </Jumbotron> 
              <div className="App">
         {
-          this.state.data.length ? (
+          this.state.articles.length ? (
             <List>
               {
-                this.state.data.map(data => (
-                  <ListItem key={data._id}>
+                this.state.articles.map(articles => (
+                  <ListItem key={articles._id}>
                     <strong>
-                      { `${data.headline.main} ${'byline' in data ? data.byline.original : ""}` }
+                      { `${articles.headline.main} ${'byline' in articles ? articles.byline.original : ""}` }
                     </strong>
                     
                     {
@@ -138,7 +139,7 @@ class Search extends Component {
                       You only need Link when you are using React Router.
                       */
                     }
-                    <a href={data.web_url}>Read the Story Here</a>
+                    <a href={articles.web_url}>Read the Story Here</a>
                     {
                       /* 
                       There's no delete button here, rather there should be a SAVE button
@@ -146,7 +147,7 @@ class Search extends Component {
                       as a method of this component class.  You may be passing it as a prop.
                       */
                     }
-                    <button onClick={() => this.handleSave(data._id)}>Save</button>
+                    <button onClick={() => this.handleSave(articles._id)}>Save</button>
 
                   </ListItem>
                 ))

@@ -6,14 +6,29 @@ const controller = require("./controllers/articleController");
 
 const apiRoutes = require("./routes/allroutes");
 const axios = require("axios");
-// const BaseURL = "https://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?";
-// const APIKEY = "api-key=525c9a845bc640ce902b3c5472346aaa&q=";
-// const query = "school";
+ const BaseURL = "https://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?";
+ const APIKEY = "api-key=525c9a845bc640ce902b3c5472346aaa&q=";
+ const query = "school";
 
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.get('/api/nyt/articles', (req, res) => {
+  console.log("in the api route");
+  axios.get(   BaseURL + APIKEY + query)  
+  .then(response => {
+      console.log("in .then of nytimes call");
+      res.send(response.data.response.docs)
+  })
+  .catch(err => {
+      console.log("in .catch of nytimes call");
+      console.log(err)
+      res.status(422).json(err)
+    })
+    
+  });
 
 app.use(apiRoutes);
 

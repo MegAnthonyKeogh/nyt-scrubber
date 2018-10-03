@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+console.log("in DB seeds")
 
-mongoose.connect(
-    process.env.MONGODB_URI ||
-    "mongodb://localhost/nytscrub"
-);
+
+    mongoose.connect("mongodb://localhost/nytscrubandsave")
 
 const articleSeed = [
     {
@@ -43,10 +42,10 @@ db.Article
 .remove({})
 .then(() => db.Article.collection.insertMany(articleSeed))
 .then(data => {
-    console.log(data.result.n + "article inserted in database");
-    process.exit(0);
+  console.log(data.result.n + " records inserted!");
+  process.exit(0);
 })
 .catch(err => {
-    console.error(err);
-    process.exit(1);
-})
+  console.error(err);
+  process.exit(1);
+});

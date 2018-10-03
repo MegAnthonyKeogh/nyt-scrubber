@@ -17,7 +17,8 @@ app.use(bodyParser.json());
 
 app.use(apiRoutes);
 
-mongoose.connect(process.env.MONGOD_URI || "mongodb://localhost/nytscrubandsave");
+mongoose.connect("mongodb://localhost/nytscrubandsave", { useNewUrlParser: true });
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 

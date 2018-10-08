@@ -19,12 +19,18 @@ app.use(bodyParser.json());
 
 app.post('/api/nyt/articles', (req, res) => {
   console.log("in the api route");
-  console.log(req.body.startyear)
-  let url = `${BaseURL}${APIKEY}${query}${req.body.query}${begin_date}${req.body.startyear}${end_date}${req.body.endyear}`
+  console.log(typeof req.body.startyear)
+  let url = `${BaseURL}${APIKEY}${query}${req.body.query}`;
+  url = req.body.startyear !== "" ? `${url}${begin_date}${req.body.startyear}`
+                                  : url;
+  url = req.body.endyear !== "" ? `${url}${end_date}${req.body.endyear}`
+                                : url;                                  
+                                  
   console.log(url)
-  axios.get(   BaseURL + APIKEY + query)  
+  axios.get(url)  
   .then(response => {
       console.log("in .then of nytimes call");
+      //console.log(response.data.response.docs)
       res.send(response.data.response.docs)
   })
   .catch(err => {

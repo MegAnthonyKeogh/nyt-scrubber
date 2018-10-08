@@ -15,13 +15,22 @@ module.exports = {
         .catch(err => res.status(422).json(err))
     },
     create: function (req, res) {
-        console.log("megan")
+       console.log("megan")
        console.log(req.body)
        console.log("ellie")
-        db.Article
+       db.Article
         .create(req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+        .then(dbModel => {
+            console.log("right here")
+            console.log(dbModel)
+            res.json(dbModel)
+        })
+        
+        .catch(err => {
+            console.log("In create catch")
+            console.log(err)
+            res.status(422).json(err)
+        });
     },
     update: function(req, res) {
         db.Article
@@ -30,6 +39,7 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     remove: function(req, res) {
+        console.log("in controller remove")
         db.Article
         .findById({_id: req.params.id})
         .then(dbModel => dbModel.remove())

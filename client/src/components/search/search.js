@@ -25,9 +25,9 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        //this.loadArticles();
-        console.log("in didMount load articles");
-     
+      API.getArticles()
+        .then(res => this.setState({saved: res.data}))
+        .catch(err => console.log(err));   
     }
     
     loadArticles = () => {
@@ -39,6 +39,13 @@ class Search extends Component {
             .catch(err => console.log(err))
     }
 
+    mongoArticles = () => {
+      API.getArticles()
+      .then(res => {
+        console.log(res)
+        this.setState({ saved: res.data})
+      })
+    }
    
     // EJB
     // callBackendAPI = () => {
@@ -62,26 +69,37 @@ class Search extends Component {
     //   });
     // }
 
+    handleDelete = (id) => {
+      API.deleteArticle(id)
+        .then(res => {
+          console.log(res)
+          let newSate = this.state.saved.filter(next => next._id !== id ? true: false)
+          this.setState({saved: newSate})
+        })
+    }
+
     handleSave = (id) => {
         let found = this.state.articles.find(article => {
             console.log(article._id)
             return article._id === id ? true:false 
         })
-           API.saveArticle({
 
-          headline: found.headline.main,
-          byline: found.byline.original,
-          web_url: found.web_url 
+        console.log(found)
+          API.saveArticle({
+            headline: found.headline.main,
+            byline: "byline" in found ? found.byline.original : "...",
+            web_url: found.web_url 
          })
          .then (res => {
-           console.log(res)
+
+           return API.getArticles();
+         })
+         .then(res => this.setState({saved: res.data}))
+         .catch(err => console.log(err));
           //call to mongo. 
          }
-          )
-
-         .catch(err => console.log(err))
         
-      }
+      
 
         
     
@@ -116,6 +134,7 @@ class Search extends Component {
 
     render() {
         return ( 
+          <Container>
             <Container fluid>
         <Row>
           <Col size="md-12">
@@ -140,21 +159,23 @@ class Search extends Component {
             placeholder = "end year (Optional)" />
             <FormBtn
             //disabled={!(this.state.search && this.state.title)}
-             onClick={this.handleFormSubmit}
-            >
-            Submit 
-            </FormBtn> 
+             onClick={this.handleFormSubmit}>
+            Submit </FormBtn> 
             </form> 
+            </Col>
+            </Row>
+            </Container>
             
+            <Container fluid>
+            <Row>
+              <Col size="md-12">
              <Jumbotron>
              < h1 > Results </h1> 
              </Jumbotron> 
-             <div className="App">
-        {
-          this.state.articles.length ? (
+             <div>
+        {this.state.articles.length ? (
             <List>
-              {
-                this.state.articles.map(articles => (
+              { this.state.articles.map(articles => (
                   <ListItem key={articles._id}>
                     <strong>
                       { `${articles.headline.main} ${'byline' in articles ? articles.byline.original : ""}` }
@@ -184,26 +205,39 @@ class Search extends Component {
             <h3>No Results to Display</h3>
           )}
       </div>
+      </Col>
+      </Row>
+      </Container>
+      //saved articles
+      <Container fluid>
+      <Row>
+        <Col size="md-12">
    
               <Jumbotron>
-              < h1 > Saved Articles </h1> 
+              <h1> Saved Articles </h1> 
               </Jumbotron> 
-              <div>
-              <List>
-                  <p>list items go here.</p>
+              {this.state.saved.length ? (
+                <List>
+              {this.state.saved.map(saved => (
+                <ListItem key={saved._id}>
+                  <a href={saved.web_url}>{saved.headline} by {saved.byline}</a>
+                  <button onClick={() => this.handleDelete(saved._id)}>Delete</button>
+                </ListItem>
+              ))}
               </List>
-              </div>
+              ) : (
+                <h3>No Results to Display</h3>
+              )}
               </Col>
               </Row>
               </Container>
-              
-             
-             
+              </Container>
+    )
+              }
+            }
+            
 
+    
 
-
-        )
-    }
-}
 
 export default Search;

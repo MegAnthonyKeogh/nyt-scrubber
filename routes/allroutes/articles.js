@@ -1,21 +1,24 @@
-const express = require('express');
-const axios = require("axios");
+
 const router = require("express").Router();
-const app = express();
 const controller = require("../../controllers/articleController")
 
 
 
 router.route('/articles')
 .get(controller.findAll)
-.post(controller.create)
+.post((req,res) => {
+  console.log("IN MEGs POST")
+  controller.create(req,res)
+})
 
 
-router
-  .route("/:id")
+router.route("/article/:id")
   .get(controller.findById)
   .put(controller.update)
-  .delete(controller.remove)
+  .delete((req, res) => {
+    console.log("In route delete")
+    controller.remove(req, res)
+  })
   
 
 ////

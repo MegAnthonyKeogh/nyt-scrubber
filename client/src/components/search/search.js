@@ -31,7 +31,7 @@ class Search extends Component {
     }
     
     loadArticles = () => {
-        API.getArticles()
+        API.nytArticles()
         .then(res => {
             console.log(res)
             this.setState({ articles: res.data, headline: "", byline: "", web_url: ""  })
@@ -88,7 +88,7 @@ class Search extends Component {
 
       handleFormSubmit = event => {
         event.preventDefault();
-          API.getArticles({
+          API.nytArticles({
             query: this.state.query,
             startyear: this.state.startyear,
             endyear: this.state.endyear

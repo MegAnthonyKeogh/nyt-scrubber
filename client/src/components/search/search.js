@@ -12,67 +12,106 @@ class Search extends Component {
     state = {
         articles: [],
         response: null,
+        id: "",
         headline: "",
         byline: "",
         web_url: "",
-        // search: "",
-        // startYear: "",
-        // endYear: "",
-        // saved: "",
+  
+         query: "",
+         startyear: "",
+         endyear: "",
+         saved: [],
 
     }
 
     componentDidMount() {
-        this.loadArticles();
+        //this.loadArticles();
         console.log("in didMount load articles");
-        // Call our fetch function below once the component mounts
-        // this.callBackendAPI()
-        // .then(res => {
-        //     console.log("In componentDidMount .then")
-        //     console.log(res)
-        //     this.setState({ data: res.data, headline: "", byline: "", web_url: "" })
-        // })
-        // .catch(err => {
-        //     console.log("in componentDidMount .catch")
-        //     console.log(err)
-        // });
+     
     }
     
     loadArticles = () => {
         API.getArticles()
         .then(res => {
             console.log(res)
-            this.setState({ articles: res.data, headline:"", byline:"", web_url: ""})
+            this.setState({ articles: res.data, headline: "", byline: "", web_url: ""  })
         })
             .catch(err => console.log(err))
     }
+
+   
     // EJB
-    callBackendAPI = () => {
-      console.log("In callBackendAPI")
-      return fetch('/api/nyt')
-      .then(response => {
-          console.log("In callBackendAPI .then");
-          console.log(response);
-          if(response.status !== 200) {
-              console.log("In callBackendAPI .then, Response from API returend status code " + response.status);
-              return;
-          }
-          console.log("In callBackendAPI .then, returning data (promise)")
-          return response.json()
+    // callBackendAPI = () => {
+    //   console.log("In callBackendAPI")
+    //   return fetch('/api/nyt')
+    //   .then(response => {
+    //       console.log("In callBackendAPI .then");
+    //       console.log(response);
+    //       if(response.status !== 200) {
+    //           console.log("In callBackendAPI .then, Response from API returend status code " + response.status);
+    //           return;
+    //       }
+    //       console.log("In callBackendAPI .then, returning data (promise)")
+    //       return response.json()
     
-      })
-      .catch(function(error) {
-          console.log("In callBackendAPI .catch");
-          console.log('Request failed', error);
-          throw error;
-      });
-    }
+    //   })
+    //   .catch(function(error) {
+    //       console.log("In callBackendAPI .catch");
+    //       console.log('Request failed', error);
+    //       throw error;
+    //   });
+    // }
 
     handleSave = (id) => {
-        console.log(`handleSave was clicked id=${id}`)
-        return;
+        let found = this.state.articles.find(article => {
+            console.log(article._id)
+            return article._id === id ? true:false 
+        })
+           API.saveArticle({
+
+          headline: found.headline.main,
+          byline: found.byline.original,
+          web_url: found.web_url 
+         })
+         .then (res => {
+           console.log(res)
+          //call to mongo. 
+         }
+          )
+
+         .catch(err => console.log(err))
+        
       }
+
+        
     
+
+      handleFormSubmit = event => {
+        event.preventDefault();
+          API.getArticles({
+            query: this.state.query,
+            startyear: this.state.startyear,
+            endyear: this.state.endyear
+          })
+            .then(res => {
+                this.setState({articles: res.data})
+            })
+            .catch(err => console.log(err));
+        }
+
+        handleInputChange = event => {
+            const { name, value } = event.target;
+            this.setState({
+              [name]: value
+            });
+          };
+          
+    
+
+
+
+          
+      
     
 
     render() {
@@ -87,33 +126,21 @@ class Search extends Component {
             </Jumbotron> 
            <form>
                <h3> Search Here </h3>
-            <Input value = {
-                this.state.query
-            }
-            onChange = {
-                this.handleInputChange
-            }
-            search = "search"
-            placeholder = "Title (required)" />
-            <Input value = {
-                this.state.startyear
-            }
-            onChange = {
-                this.handleInputChange
-            }
-            startyear = "start year"
+            <Input value = { this.state.query}
+            onChange = { this.handleInputChange }
+            name = "query"
+            placeholder = "headline (required)" />
+            <Input value = {this.state.startyear}
+            onChange = { this.handleInputChange}
+            name = "startyear"
             placeholder = "start year (required)" />
-            <TextArea value = {
-                this.state.endYear
-            }
-            onChange = {
-                this.handleInputChange
-            }
-            endyear = "end year"
+            <TextArea value = { this.state.endyear }
+            onChange = {  this.handleInputChange }
+            name = "endyear"
             placeholder = "end year (Optional)" />
             <FormBtn
             //disabled={!(this.state.search && this.state.title)}
-            // onClick={this.handleFormSubmit}
+             onClick={this.handleFormSubmit}
             >
             Submit 
             </FormBtn> 

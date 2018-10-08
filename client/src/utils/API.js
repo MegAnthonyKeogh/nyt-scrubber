@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getArticles: function() {
-    return axios.get('/api/nyt/articles');
+  getArticles: function(searchParams) {
+    return axios.post('/api/nyt/articles', searchParams );
   },
   // Gets the book with the given id
   getArticle: function(id) {

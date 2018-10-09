@@ -19,7 +19,7 @@ class Search extends Component {
          query: "",
          startyear: "",
          endyear: "",
-         saved: [],
+        
 
     }
 

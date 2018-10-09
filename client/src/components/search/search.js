@@ -3,7 +3,6 @@ import Jumbotron from "../Jumbotron";
 import { Col, Row, Container } from "../Grid";
 import { Input, TextArea, FormBtn } from "../Form";
 import {List, ListItem } from "../List";
-import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
 
@@ -47,27 +46,7 @@ class Search extends Component {
       })
     }
    
-    // EJB
-    // callBackendAPI = () => {
-    //   console.log("In callBackendAPI")
-    //   return fetch('/api/nyt')
-    //   .then(response => {
-    //       console.log("In callBackendAPI .then");
-    //       console.log(response);
-    //       if(response.status !== 200) {
-    //           console.log("In callBackendAPI .then, Response from API returend status code " + response.status);
-    //           return;
-    //       }
-    //       console.log("In callBackendAPI .then, returning data (promise)")
-    //       return response.json()
-    
-    //   })
-    //   .catch(function(error) {
-    //       console.log("In callBackendAPI .catch");
-    //       console.log('Request failed', error);
-    //       throw error;
-    //   });
-    // }
+
 
     handleDelete = (id) => {
       API.deleteArticle(id)
@@ -208,30 +187,9 @@ class Search extends Component {
       </Col>
       </Row>
       </Container>
-      //saved articles
-      <Container fluid>
-      <Row>
-        <Col size="md-12">
-   
-              <Jumbotron>
-              <h1> Saved Articles </h1> 
-              </Jumbotron> 
-              {this.state.saved.length ? (
-                <List>
-              {this.state.saved.map(saved => (
-                <ListItem key={saved._id}>
-                  <a href={saved.web_url}>{saved.headline} by {saved.byline}</a>
-                  <button onClick={() => this.handleDelete(saved._id)}>Delete</button>
-                </ListItem>
-              ))}
-              </List>
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
-              </Col>
-              </Row>
-              </Container>
-              </Container>
+      </Container>
+    
+      
     )
               }
             }

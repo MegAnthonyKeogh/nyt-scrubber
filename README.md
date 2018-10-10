@@ -33,6 +33,7 @@ Use this code for your package.json
 
 Next, go into your client-side/react-side package.json, and add the code:
 ![client](client.png)
+Most likely, you are only adding the proxy line. This is becausae you have to state which port your server-side is running on so that your react application will not launch on that port. If you do, you will see an error, port already in use error. Those are not the exact words, but the error eludes to that issue. 
 
 
 

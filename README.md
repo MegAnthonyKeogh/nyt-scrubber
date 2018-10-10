@@ -17,7 +17,7 @@ Then cd into my-app folder and run the command yarn start. Within a few moments 
 
 It's important to notice that React runs on localhost:3000. This is important to realize because your full stack website will run on two ports. Thus, you have to specify which ports you are using otherwise you will receive errors and your application will not launch. 
 
-Let's take a moment to review the files and folders React install for you and your development experience. 
+Let's take a moment to review the files and folders React install for you and your development experience. ![react files](foldersReact.png)
 
 I used bootstrap's form to quickly create my questions with a correspondng numeric scale(from 1-5), and a submit button on my survey.html file.
 

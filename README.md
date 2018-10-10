@@ -15,7 +15,7 @@ Once there, you can make a folder/director with the `mkdir <foldername>` command
 
 Next it's time to launch your React application. First cd into the new folder. Use the command `npx create-react-app my-app` to launch the react site. You know you have been successful when you see notes from react on the next steps and you'll see "successfully compiled!" written in green. 
 
-Then cd into my-app folder and run the command yarn start. Within a few moments you will see the React started site up and running. It will look like this: ![react website](Screen Shot 2018-10-10 at 4.12.09.png)
+Then cd into my-app folder and run the command yarn start. Within a few moments you will see the React started site up and running. It will look like this: ![react website](react.png)
 
 I used bootstrap's form to quickly create my questions with a correspondng numeric scale(from 1-5), and a submit button on my survey.html file.
 

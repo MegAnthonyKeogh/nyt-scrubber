@@ -37,6 +37,8 @@ Most likely, you are only adding the proxy line. This is becausae you have to st
 
 ![server.js](serverJS.png)
 
+The code in this file will launch your website and it's also ready for you to deploy to heroku. Using process.env, gives heroku the flexibility it needs to find an open port to run your application. 
+
 
 
 

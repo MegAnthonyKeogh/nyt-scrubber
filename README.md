@@ -17,7 +17,9 @@ Then cd into my-app folder and run the command yarn start. Within a few moments 
 
 It's important to notice that React runs on localhost:3000. This is important to realize because your full stack website will run on two ports. Thus, you have to specify which ports you are using otherwise you will receive errors and your application will not launch. 
 
-Let's take a moment to review the files and folders React install for you and your development experience. ![react files](foldersReact.png)
+Let's take a moment to review the files and folders React install for you and your development experience. ![react files](foldersReact.png). The node_modules are the npm packages react install to give you an effortless development experience. It gives the appearence that your website is already being hosted on a server and it also gives you instantaneous code compiling that allows you to instantly see the changes your code is making to the user experience. If you are planning on adding this project to github, now is the time to create a git ignore folder with the command `touch .gitignore` and add `node_modules` to it. This way, your github won't be bogged down with files. Your package.json has all the information you need to download the files and re-create this project again. 
+
+Next, use the command `git init` to start a repository on github for this project. If you notice, the file structure, you'll see there is already a readme created for you from React. Use this Readme because it has tons of information to help you further develop this website. 
 
 I used bootstrap's form to quickly create my questions with a correspondng numeric scale(from 1-5), and a submit button on my survey.html file.
 

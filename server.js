@@ -14,6 +14,10 @@ const axios = require("axios");
 
 const port = process.env.PORT || 5000;
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+ }
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -46,32 +50,6 @@ app.use(apiRoutes);
 mongoose.connect("mongodb://localhost/nytscrubandsave", { useNewUrlParser: true });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-
-
-
-// app.get('/api/nyt', (req, res) => {
-//   console.log("in the api route");
-//   axios.get("https://developer.nytimes.com/proxy/https/api.nytimes.com/svc/search/v2/articlesearch.json?api-key=525c9a845bc640ce902b3c5472346aaa&q=school")
-//   .then(response => {
-//       console.log("in .then of nytimes call");
-//       res.send(response.data.response.docs)
-//   })
-//   .catch(err => {
-//       console.log("in .catch of nytimes call");
-//       console.log(err)
-//       res.status(422).json(err)
-//   })
-// });
-
-// app.get('/api/articles', (req, res) => {
-// get(controller.findAll)
-// console.log("in find all articles")
-// })
-
-
-
-
 
 
 module.exports = app;

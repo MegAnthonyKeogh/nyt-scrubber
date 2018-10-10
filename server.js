@@ -47,7 +47,7 @@ app.post('/api/nyt/articles', (req, res) => {
 
 app.use(apiRoutes);
 
-mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/nytscrubandsave", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/nytscrubandsave");
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

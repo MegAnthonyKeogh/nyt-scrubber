@@ -39,6 +39,25 @@ Most likely, you are only adding the proxy line. This is becausae you have to st
 
 The code in this file will launch your website and it's also ready for you to deploy to heroku. Using process.env, gives heroku the flexibility it needs to find an open port to run your application. 
 
+## Launch the application
+Now it's time to check to see if your application is working from a full stack perspective. Run `npm install` and once all the node modules are ready, run `yarn start`. Your terminal should tell you what port it is listening on because of our console log, "listening on port ${PORT}". Seconds later the client/react website should launch if you do not already have your default browser open. 
+
+## Designing the Components
+
+
+
+## Connecting to NYT
+
+## Setting the Routes
+
+## setting the state
+
+## Making the models
+
+## Connecting to Mongo
+
+## Launching on Heroku
+
 
 
 

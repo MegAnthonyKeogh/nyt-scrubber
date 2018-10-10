@@ -7,7 +7,7 @@ Below are step by step instructions to help you recreate the project yourself. I
 
 
 
-###Getting Started ###
+### Getting Started ###
 I believe the best way to approach this full stack development project is to start with the client-side development. This means starting with react. React is a JavaScript library for building userinterfaces developed by Facebook. Since it is created in JavaScript, you can pass data rich objects throughout your application without slowing down the user experience and the components effortlessly adjust to the screenwidth of the user allowing for a wonderful experience. For more information on React, visit their site [here](https://reactjs.org/).
 
 

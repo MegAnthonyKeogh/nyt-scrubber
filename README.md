@@ -32,6 +32,7 @@ Use this code for your package.json
 ![server-side package.json](serverJSON.png) Remember to put your application name and your name in the corresponding fields. 
 
 Next, go into your client-side/react-side package.json, and add the code:
+![client](client.png)
 
 
 

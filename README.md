@@ -1,6 +1,6 @@
 MERN project
 
-[Test it here](https://agile-tor-19181.herokuapp.com/saved) 
+[Test it here](https://agile-tor-19181.herokuapp.com/) 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

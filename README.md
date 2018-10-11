@@ -128,6 +128,14 @@ Since I did not set up my search form component yet, I was using school as my qu
 This is where it gets tricky. I set up a separate file in my src folder to make onclick events to pull information from the New York Times. I set up a utils folder and in it I have an API.js file. In here, I created a bunch of calls to both MongoDB and to the New York Times. These get and post function are made available with the [npm package AXIOS](https://www.npmjs.com/package/axios). 
 
 Since I have these functions going to the same route as my NYT calls, I am able to retrieve the information. Here is my file for you to review. 
+![utils](utils.png) The functions here will get articles from the New York Times with the nytArticles function and this function takes the data from the form and uses it via the variable searchParams. That information is passed to the call we're making on server.js. 
+
+getArticles - gets articles from the MongoDB database. We have not set up that function yet, but feel free to code it now. All of the other functions communication with MongoDB. Get, Delete are CRUD operations and those terms are often associated with calls to databases. 
+
+Next we need to jump into our Search.js folder and insert these functions into onClick events. 
+First, import these functions into Search.js at the top of the file. My code looks like this:
+`import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. 
+
 
 
 ## Setting the Routes

@@ -99,10 +99,14 @@ Second, all of your important files will be in your 'src' file. If you want to d
    
    Next go to your App.js file. In there import the pages, and import 2 components from React. You're importing Reach and React BrowswerRouter. This allows us to see the routes from the users perspective. 
    Here's what the code should look like:
+   ![app.js page](app.png) 
+   Disregard the `<Nav/>` Because we not coded that yet. 
    
+   The BrowswerRouter in the alias of Router, Route, and Switch, are from React-router-dom (meaningit should be used for desktop website viewing), These components allow us to set up routes like "/" to show certain pages. The code `<Route exact path="/" component={Search} />` means that localhost:3000/ will show the search page. 
    
-  
-## React Router Setup
+   This is the perfect time to stop and check to see if the routes are showing the pages. Remember, we only have the jumbotron and a header on each page. Once that's ready, let's start connecting to NYT API to search for articles. It's imperative that you have an API Key to access the New York Times Search API. You can register for one [here](https://developers.nytimes.com/), and you'll receive an email with it, within the hour. 
+   
+Once you have that, I would use this [page](https://developer.nytimes.com/article_search_v2.json), to start playing around with the data to see what kind of object you are getting back so you can figure out how to target it.
 
 
 ## Connecting to NYT

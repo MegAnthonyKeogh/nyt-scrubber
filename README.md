@@ -50,7 +50,9 @@ Now that we our backend and frontend working, it's time to build some of the pre
 
 Building a website in React is somewhat different at first compared to how you build a website with just HTML, CSS and Javascript. First almost all of your files will be written in JSX. It's JavaScript, and all of your files will be in JavaScript, but you'll see elements that have HTML and CSS syntax within them. 
 
-Second, all of your important files will be in your 'src' file. If you want to display anything and have React notice it, it must be in this file. In the public file, you'll see an html page with one <div> with the id of "root". Then notice 
+Second, all of your important files will be in your 'src' file. If you want to display anything and have React notice it, it must be in this file. In the public file, you'll see an html page with one <div> with the id of "root". Then notice in the App.js and the Index.js (at the same folder level) target that div. You'll see it here in the files I have for a different project. 
+  ![app.js and index.js files in react](appAndindexjs.png) 
+  T
 
 
 ## Connecting to NYT

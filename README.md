@@ -66,6 +66,27 @@ Second, all of your important files will be in your 'src' file. If you want to d
  
  Next in Search.js, Saved.js, and Jumbotron.js you must have `import React from "react";` exactly as you see it here. Yes, React must be capitalized for it to work. Save yourself from this misery and trust me. At the bottom of these files add the code. Here is the fully coded Jumbotron file for you to review. 
  ![jumbotron](Jumbo.png)
+ 
+ All components that do not have state, should be set up similar to this. The const/ variable name should be exactly like your export default name. You should also use the same spelling when you import this item into pages or on the App.js file. If you notice the `const Jumbotron = ({ children }) => (` the code. This allows us to pass props/children to this element. We can have dynamic data in this element if we want it. 
+ 
+ The Search.js and Saved.js files are different because they will have state and a render function. 
+ First we will import React and the Jumbotron with this code at the top of our files:
+ `import React, { Component } from "react";`
+`import Jumbotron from "../../components/Jumbotron";`
+
+`class Search extends Component {`
+
+    `state = {`
+        `articles: [],`
+       
+    `}`
+    
+    `render() {`
+    `return (`
+    `}`
+   ` }`
+   
+   `export default Search`
   
 ## React Router Setup
 

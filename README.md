@@ -51,8 +51,9 @@ Now that we our backend and frontend working, it's time to build some of the pre
 Building a website in React is somewhat different at first compared to how you build a website with just HTML, CSS and Javascript. First almost all of your files will be written in JSX. It's JavaScript, and all of your files will be in JavaScript, but you'll see elements that have HTML and CSS syntax within them. 
 
 Second, all of your important files will be in your 'src' file. If you want to display anything and have React notice it, it must be in this file. In the public file, you'll see an html page with one <div> with the id of "root". Then notice in the App.js and the Index.js (at the same folder level) target that div. You'll see it here in the files I have for a different project. 
-  ![app.js and index.js files in react](appAndindexjs.png) 
-  T
+  ![app.js and index.js files in react](appAndindexjs.png) Another important thing to note is that all JavaScript engines look for an index.js file to read if they are not given a direction. From there, they will be directed. That is why all of the files/components in react have a corresponding index.js file at their same level in the file structure so that they are directed to the correct page. React has set up this index.js and App.js for you. The App.js file is primary point of connection to your JavaScript website, and connecting to what the user will see. App is the parent file and it will recieve all of the information and pass it down to the other files via props. - Unless you choose to code the website in a different format. This is the format given to you by React. Also note that props cannot be passed from child to parent. This is crucial to understand when we start manipulating the state of the project. 
+  
+## React Router Setup
 
 
 ## Connecting to NYT

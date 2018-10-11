@@ -110,6 +110,17 @@ Once you have that, I would use this [page](https://developer.nytimes.com/articl
 
 
 ## Connecting to NYT
+In this application, I'm using a form to get the data from the user to preform the search. So there's three parameters the New York Times Article search api takes. That's the title/search topic, and the beginning and ending dates (DDMMYYYY format) so that we're not searching the entire database for articles if a time period is important. I set up [terneries](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) in my search query so that  I did not have to enter dates every time I wanted to test my application. So the teneries (singular tenery) has this syntax Blank ? true:false; Basically, it is a boolean that returns the option left of the colon (:) if the statement is true, or what is to the right colon if the statment is false. My ternery puts just blank quotes if a date is not supplied so that the query still works. 
+
+You should read the teneries below as saying "if startyear does not equal ""(also known as empty), then use the date provided in req.body.staryear. If it is empty use the url without the date.  The same logic is apply to the second tenery. 
+url = req.body.startyear !== "" ? `${url}${begin_date}${req.body.startyear}`
+                                  : url;
+  url = req.body.endyear !== "" ? `${url}${end_date}${req.body.endyear}`
+                                : url;       
+
+I made my URL, API Key and the search queries, and dates all variables. This way, once I have the information from the user, I can easily facilitate the call. I made my call from my server.js file. I'm posting the information to route: '/api/nyt/articles'.
+
+In this same function, I'm then doing an axios get call. This way I'm retrieving the information after it has been posted from the API. Here's what the code looks like:
 
 ## Setting the Routes
 

@@ -53,6 +53,15 @@ Building a website in React is somewhat different at first compared to how you b
 Second, all of your important files will be in your 'src' file. If you want to display anything and have React notice it, it must be in this file. In the public file, you'll see an html page with one <div> with the id of "root". Then notice in the App.js and the Index.js (at the same folder level) target that div. You'll see it here in the files I have for a different project. 
   ![app.js and index.js files in react](appAndindexjs.png) Another important thing to note is that all JavaScript engines look for an index.js file to read if they are not given a direction. From there, they will be directed. That is why all of the files/components in react have a corresponding index.js file at their same level in the file structure so that they are directed to the correct page. React has set up this index.js and App.js for you. The App.js file is primary point of connection to your JavaScript website, and connecting to what the user will see. App is the parent file and it will recieve all of the information and pass it down to the other files via props. - Unless you choose to code the website in a different format. This is the format given to you by React. Also note that props cannot be passed from child to parent. This is crucial to understand when we start manipulating the state of the project. 
   
+ ## Presentation components
+ 
+ To quicken my creation of the website, I have used Bootstrap 4 to help me render the components quickly. To do this, I added Bootstraps CSS link to my index.html page. Use this link the the head of your index.html page `<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">"` 
+ 
+ Disregard the links it tells you to use in the bottom of your page. Those are jQuery scripts and they will not work on the virtual DOM rendered by React. 
+ 
+ Let's start coding! 
+ In your src file, make two directories. One for components, and one for pages. In components, make a folder for Jumbotron (and in Jumbotron create an index.js, and a Jumbotron.js). In pages, create a Saved folder and a Search folder. Add a Search.js, and Index.js to the Search folder and in the Saved Folder add a Saved.js, and a Index.js. 
+  
 ## React Router Setup
 
 

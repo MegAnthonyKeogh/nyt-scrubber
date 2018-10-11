@@ -121,7 +121,14 @@ url = req.body.startyear !== "" ? `${url}${begin_date}${req.body.startyear}`
 I made my URL, API Key and the search queries, and dates all variables. This way, once I have the information from the user, I can easily facilitate the call. I made my call from my server.js file. I'm posting the information to route: '/api/nyt/articles'.
 
 In this same function, I'm then doing an axios get call. This way I'm retrieving the information after it has been posted from the API. Here's what the code looks like:
-![api call with axios](nytapicall.png)
+![api call with axios](nytapicall.png) 
+Since I did not set up my search form component yet, I was using school as my query term. Feel free to do something similar while you test. 
+
+## Getting the data in state. 
+This is where it gets tricky. I set up a separate file in my src folder to make onclick events to pull information from the New York Times. I set up a utils folder and in it I have an API.js file. In here, I created a bunch of calls to both MongoDB and to the New York Times. These get and post function are made available with the [npm package AXIOS](https://www.npmjs.com/package/axios). 
+
+Since I have these functions going to the same route as my NYT calls, I am able to retrieve the information. Here is my file for you to review. 
+
 
 ## Setting the Routes
 

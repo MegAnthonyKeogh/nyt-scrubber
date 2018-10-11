@@ -121,6 +121,7 @@ url = req.body.startyear !== "" ? `${url}${begin_date}${req.body.startyear}`
 I made my URL, API Key and the search queries, and dates all variables. This way, once I have the information from the user, I can easily facilitate the call. I made my call from my server.js file. I'm posting the information to route: '/api/nyt/articles'.
 
 In this same function, I'm then doing an axios get call. This way I'm retrieving the information after it has been posted from the API. Here's what the code looks like:
+![api call with axios]('nytapicall.png)
 
 ## Setting the Routes
 

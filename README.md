@@ -72,6 +72,7 @@ Second, all of your important files will be in your 'src' file. If you want to d
  The Search.js and Saved.js files are different because they will have state and a render function. 
  First we will import React and the Jumbotron with this code at the top of our files:
  `import React, { Component } from "react";`
+ 
 `import Jumbotron from "../../components/Jumbotron";`
 
 `class Search extends Component {`
@@ -87,6 +88,19 @@ Second, all of your important files will be in your 'src' file. If you want to d
    ` }`
    
    `export default Search`
+   
+   Please notice that Component extends over state, and render. 
+   
+   In the render functions on both pages, add the Jumbotron component and a header with the corresponding name of the page. 
+   For example:
+   `<Jumbotron>`
+   `<h1> Saved Page <h1>`
+   `</Jumbotron>`
+   
+   Next go to your App.js file. In there import the pages, and import 2 components from React. You're importing Reach and React BrowswerRouter. This allows us to see the routes from the users perspective. 
+   Here's what the code should look like:
+   
+   
   
 ## React Router Setup
 

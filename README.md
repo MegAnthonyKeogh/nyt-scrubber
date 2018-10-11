@@ -64,7 +64,8 @@ Second, all of your important files will be in your 'src' file. If you want to d
  
  In all of the index.js files use this code `export { default } from "./Jumbotron";` but with the corresponding file you want to export. For example, the index.js file with Search.js will say `export { default } from "./Search"`. This tells React to look in the Search.js file that is in the same directory as the index.js file to launch the code. 
  
- Next in Search.js, Saved.js, and Jumbotron.js you must have `import React from "react";` exactly as you see it here. Yes, React must be capitalized for it to work. Save yourself from this misery and trust me. At the bottom of these files add the code
+ Next in Search.js, Saved.js, and Jumbotron.js you must have `import React from "react";` exactly as you see it here. Yes, React must be capitalized for it to work. Save yourself from this misery and trust me. At the bottom of these files add the code. Here is the fully coded Jumbotron file for you to review. 
+ ![jumbotron](Jumbo.png)
   
 ## React Router Setup
 

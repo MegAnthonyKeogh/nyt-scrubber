@@ -137,13 +137,17 @@ First, import these functions into Search.js at the top of the file. My code loo
 `import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. Since we imported all of the routes into our server.js file, the server knows to make the http call using axios library and push and pull (post and get respectively) from those routes because of the connection to server.js, and the onclick function on the search.js file.
 
 
-
-
 ## Setting the Routes
+When I refer to setting up the routes here, I'm referring to the routes on the express/server-side of the application. These routes are crucial to helping our application pull data, from the New York Times, and push saved articles to our MongoDB database securely. By facilitating our API calls on the server-side, it makes it hard for individuals to find API keys, and other information that could be conneted to a payment source. 
+
+My first step here, is to work the data I'm pulling from the New York times and turn that 
 
 ## setting the state
 
 ## Making the models
+
+Now that I know how I want to display my data, it is easy for me to set up my mode. 
+I simple make an object with the key value pairs I beleive are important to make this project work. 
 
 ## Connecting to Mongo
 

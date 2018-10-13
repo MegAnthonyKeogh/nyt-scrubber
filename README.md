@@ -134,7 +134,8 @@ getArticles - gets articles from the MongoDB database. We have not set up that f
 
 Next we need to jump into our Search.js folder and insert these functions into onClick events. 
 First, import these functions into Search.js at the top of the file. My code looks like this:
-`import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. 
+`import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. Since we imported all of the routes into our server.js file, the server knows to make the http call using axios library and push and pull (post and get respectively) from those routes because of the connection to server.js, and the onclick function on the search.js file.
+
 
 
 

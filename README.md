@@ -134,7 +134,8 @@ The code above shows the data that we receieved from NYT. It places each article
 ![article call funcation](nytcall.png). The most important item to notice here is that setState funcion and the articles [] is set to the res.data. setState is how you set the state in react and articles is an array in the state component in the Search class. This means that articles will continue to update as it is use and it is a smart component vs. a  display component. 
 
 ## making the models
-Once I knew what data I wanted to target coming from NYT, and how I wanted to set it up, I finally had my model that I wanted to connect and save to my database. Since I am using mongoose and not just MongoDB directly, the model I create is important and it will allow me to perform queries on the database more easily. 
+Once I knew what data I wanted to target coming from NYT, and how I wanted to set it up, I finally had my model that I wanted to connect and save to my database. Since I am using mongoose and not just MongoDB directly, the model I create is important and it will allow me to perform queries on the database more easily. Here is the code I used to build my model:
+![nyt article model](model.png)
 
 
 

@@ -127,8 +127,11 @@ Since I did not set up my search form component yet, I was using school as my qu
 ## Targeting the data and setting the state. 
 
 Now that I know what the data looks like coming back from the New York Times, I'm able to target certain pieces of it so that I can present that data to the user. I'm also setting the state for this component because I want the articles to change with every search performed by the user. In my code below a few things are happening. 
-First, I'm using the map functionality to iterate over the array of objects coming back from NYT. From that map, we're creating a new array with only the key value pairs we want to displace. 
+First, I'm using the map functionality to iterate over the array of objects coming back from NYT. From that map, we're creating a new array with only the key value pairs we want to displace. At the bottom you will see code that corresponds to a "Save" button. This component will look the same on each object because of how it is render, but since it as a unique id, you can choose to save just this article vs.
 ![mao array for results](mapArt.png)
+
+The code above shows the data that we receieved from NYT. It places each article as a list item for the user. The function that actually makes the call to load the articles from the website is this:
+![article call funcation](nytcall.png). The most important item to notice here is that setState funcion and the articles [] is set to the res.data. setState is how you set the state in react and articles is an array in the state component in the Search class. This means that articles will continue to update as it is use and it is a smart component vs. a  display component. 
 
 ## Getting the data in state. 
 This is where it gets tricky. I set up a separate file in my src folder to make onclick events to pull information from the New York Times. I set up a utils folder and in it I have an API.js file. In here, I created a bunch of calls to both MongoDB and to the New York Times. These get and post function are made available with the [npm package AXIOS](https://www.npmjs.com/package/axios). 
@@ -142,6 +145,14 @@ Next we need to jump into our Search.js folder and insert these functions into o
 First, import these functions into Search.js at the top of the file. My code looks like this:
 `import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. Since we imported all of the routes into our server.js file, the server knows to make the http call using axios library and push and pull (post and get respectively) from those routes because of the connection to server.js, and the onclick function on the search.js file.
 
+## making the models
+
+## setting the controller
+
+## connecting to the utils
+
+Now that we have the data coming back from NYT and we know how to target the elements we want, I finally feel like I can create the model for each article to be save to my database. 
+
 
 ## Setting the Routes
 When I refer to setting up the routes here, I'm referring to the routes on the express/server-side of the application. These routes are crucial to helping our application pull data, from the New York Times, and push saved articles to our MongoDB database securely. By facilitating our API calls on the server-side, it makes it hard for individuals to find API keys, and other information that could be conneted to a payment source. 
@@ -149,10 +160,7 @@ When I refer to setting up the routes here, I'm referring to the routes on the e
 My first step here, is to work the data I'm pulling from the New York times and turn that 
 
 
-## Making the models
-
-Now that I know how I want to display my data, it is easy for me to set up my mode. 
-I simple make an object with the key value pairs I beleive are important to make this project work. 
+ 
 
 ## Connecting to Mongo
 

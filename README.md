@@ -137,6 +137,14 @@ The code above shows the data that we receieved from NYT. It places each article
 Once I knew what data I wanted to target coming from NYT, and how I wanted to set it up, I finally had my model that I wanted to connect and save to my database. Since I am using mongoose and not just MongoDB directly, the model I create is important and it will allow me to perform queries on the database more easily. Here is the code I used to build my model:
 ![nyt article model](model.png)
 
+By importing mongoose, I'm able to use the constructor method that comes with mongoose. The constructor function is called a schema (and it is very similar to the schema idea in MySQL). Since all of my keys value pairs are strings, this was an extremely easy model to make. I export the model object as Article because I want all of my article to have these key value pairs. 
+
+Next, I import this model into my controllers file. This is where I built out all of my CRUD (create, update, remove)operations that work with MongoDB. 
+
+Next, I connect my controller file to all of my express routes, so that any files that are get/posting to these routes (like my API.js file in the utils folder can gain access to these functions. I separated by routes in a way that makes it easier to built new routes into this application in the future. Instead of hard coding each route. All information routes will start with "/api", so that is in my index.js file that connects to my "articles.js" file. Here's the code for those files respectively. 
+![index.js file to the routes folder]
+![article.js file in the routes folder]
+
 
 
 ## setting the controller

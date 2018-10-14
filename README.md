@@ -142,8 +142,8 @@ By importing mongoose, I'm able to use the constructor method that comes with mo
 Next, I import this model into my controllers file. This is where I built out all of my CRUD (create, update, remove)operations that work with MongoDB. 
 
 Next, I connect my controller file to all of my express routes, so that any files that are get/posting to these routes (like my API.js file in the utils folder can gain access to these functions. I separated by routes in a way that makes it easier to built new routes into this application in the future. Instead of hard coding each route. All information routes will start with "/api", so that is in my index.js file that connects to my "articles.js" file. Here's the code for those files respectively. 
-![index.js file to the routes folder]
-![article.js file in the routes folder]
+![index.js file to the routes folder](indexapiroutes.png)
+![article.js file in the routes folder](expressRoutes.png)
 
 
 

@@ -133,8 +133,24 @@ First, I'm using the map functionality to iterate over the array of objects comi
 The code above shows the data that we receieved from NYT. It places each article as a list item for the user. The function that actually makes the call to load the articles from the website is this:
 ![article call funcation](nytcall.png). The most important item to notice here is that setState funcion and the articles [] is set to the res.data. setState is how you set the state in react and articles is an array in the state component in the Search class. This means that articles will continue to update as it is use and it is a smart component vs. a  display component. 
 
+## making the models
+Once I knew what data I wanted to target coming from NYT, and how I wanted to set it up, I finally had my model that I wanted to connect and save to my database. Since I am using mongoose and not just MongoDB directly, the model I create is important and it will allow me to perform queries on the database more easily. 
+
+
+
+## setting the controller
+
+## connecting to the utils
+
+Now that we have the data coming back from NYT and we know how to target the elements we want, I finally feel like I can create the model for each article to be save to my database. 
+
+
 ## Getting the data in state. 
 This is where it gets tricky. I set up a separate file in my src folder to make onclick events to pull information from the New York Times. I set up a utils folder and in it I have an API.js file. In here, I created a bunch of calls to both MongoDB and to the New York Times. These get and post function are made available with the [npm package AXIOS](https://www.npmjs.com/package/axios). 
+
+## Setting the Routes
+When I refer to setting up the routes here, I'm referring to the routes on the express/server-side of the application. These routes are crucial to helping our application pull data, from the New York Times, and push saved articles to our MongoDB database securely. By facilitating our API calls on the server-side, it makes it hard for individuals to find API keys, and other information that could be conneted to a payment source. 
+
 
 Since I have these functions going to the same route as my NYT calls, I am able to retrieve the information. Here is my file for you to review. 
 ![utils](utils.png) The functions here will get articles from the New York Times with the nytArticles function and this function takes the data from the form and uses it via the variable searchParams. That information is passed to the call we're making on server.js. 
@@ -144,18 +160,6 @@ getArticles - gets articles from the MongoDB database. We have not set up that f
 Next we need to jump into our Search.js folder and insert these functions into onClick events. 
 First, import these functions into Search.js at the top of the file. My code looks like this:
 `import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. Since we imported all of the routes into our server.js file, the server knows to make the http call using axios library and push and pull (post and get respectively) from those routes because of the connection to server.js, and the onclick function on the search.js file.
-
-## making the models
-
-## setting the controller
-
-## connecting to the utils
-
-Now that we have the data coming back from NYT and we know how to target the elements we want, I finally feel like I can create the model for each article to be save to my database. 
-
-
-## Setting the Routes
-When I refer to setting up the routes here, I'm referring to the routes on the express/server-side of the application. These routes are crucial to helping our application pull data, from the New York Times, and push saved articles to our MongoDB database securely. By facilitating our API calls on the server-side, it makes it hard for individuals to find API keys, and other information that could be conneted to a payment source. 
 
 My first step here, is to work the data I'm pulling from the New York times and turn that 
 

@@ -124,6 +124,10 @@ In this same function, I'm then doing an axios get call. This way I'm retrieving
 ![api call with axios](nytapicall.png) 
 Since I did not set up my search form component yet, I was using school as my query term. Feel free to do something similar while you test. 
 
+##Targeting the data and setting the state. 
+
+Now that I know what the data looks like coming back from the New York Times, I'm able to target certain pieces of it so that I can present that data to the user. I'm also setting the state for this component because I want the articles to change with every search performed by the user. 
+
 ## Getting the data in state. 
 This is where it gets tricky. I set up a separate file in my src folder to make onclick events to pull information from the New York Times. I set up a utils folder and in it I have an API.js file. In here, I created a bunch of calls to both MongoDB and to the New York Times. These get and post function are made available with the [npm package AXIOS](https://www.npmjs.com/package/axios). 
 
@@ -142,7 +146,6 @@ When I refer to setting up the routes here, I'm referring to the routes on the e
 
 My first step here, is to work the data I'm pulling from the New York times and turn that 
 
-## setting the state
 
 ## Making the models
 

@@ -139,7 +139,8 @@ Once I knew what data I wanted to target coming from NYT, and how I wanted to se
 By importing mongoose, I'm able to use the constructor method that comes with mongoose. The constructor function is called a schema (and it is very similar to the schema idea in MySQL). Since all of my keys value pairs are strings, this was an extremely easy model to make. I exported the model object as Article because I want all of my article to have these key value pairs. 
 
 ## setting the controller
-Next, I imported this model into my controllers file. This is where I built out all of my CRUD (create, update, remove)operations that work with MongoDB. 
+Next, I imported this model into my controllers file. This is where I built out all of my CRUD (create, update, remove)operations that work with MongoDB. Here's the functions now available to my application now that I have my model and controller set up. 
+![controller](controller.png)
 
 Then I connected my controller file to all of my express routes, so that any files that are get/posting to these routes (like my API.js file in the utils folder can gain access to these functions. I separated by routes in a way that makes it easier to built new routes into this application in the future. Instead of hard coding each route. All information routes will start with "/api", so that is in my index.js file that connects to my "articles.js" file. Here's the code for those files respectively. 
 ![index.js file to the routes folder](indexapiroutes.png)
@@ -151,6 +152,8 @@ I also connected my API routes to my server.js file to ensure it is use and the 
 
 ## Setting the Routes
 When I refer to setting up the routes here, I'm referring to the routes on the express/server-side of the application. These routes are crucial to helping our application pull data, from the New York Times, and push saved articles to our MongoDB database securely. By facilitating our API calls on the server-side, it makes it hard for individuals to find API keys, and other information that could be conneted to a payment source. 
+
+My API routes are set up in two steps. On my index.js file that corresponds to the apiroutes.js file in allroutes folder, it says `router.use("/api", apiRoutes)`, and then in the articles,js folder, it states, `router.route('/articles')`. This means that to use any of the article routes, you'll have to use the extension /api first. So all the routes look like  "/api/article".
 
 Please note that server.js file is the most important file to this application. It's the part of the file that connects both sides (client and server) of the website to work as one fluid application. 
 

@@ -178,19 +178,41 @@ My handleSubmitForm onClick function takes all of the input data from the from o
 Here's the function for the API.nytArticles function. As you can see, this function sets the state for the results so we will see the articles load from the New York Times after this function is called. 
 ![new york times call](loadArticles)
 
+## Connecting to Mongo
 The next function we want to do is to connect to MongoDB and Save some of the articles we like! First, add this code to your server.js file `mongoose.connect(process.env.MONGOLAB_ThisChangesBasedonHeroku_URI ||"mongodb://localhost/Nameofdatabase");` This is just a template. You'll be assigned a unique name from Mongolab and Heroku for the first part(before the ||) and you can name your database whatever you deem appropriate. 
 
-Please note that we already added our save functionality to our utils folder, and to our controller folder. So all we have to do is make an onClick event in our search.js file and call this functionality. 
+Please note that we already added our save functionality to our utils folder, and to our controller folder. So all we have to do is make an onClick event in our search.js file and call this functionality. We call the save functionality in the utils folder with the code, "API.saveArticles".  Here is the code that goes into search.js to make this function. 
+![handle save](handleSave.png)
 
+We are passing the id to the function because that is how we know which unique article to save. We then work to make sure we have the correct id with another ternary function. Next, we use our untils function to save the article and push it to the save page of the website and to MongoDB. We then recall MongoDB to get a new list of saved articles with the getArticles function. 
 
+You should check your MongoDB database to make sure the article is now in it. 
 
-
-
- 
-
-## Connecting to Mongo
+You will follow very similar instructions to delete the article from the MongoDB. 
 
 ## Launching on Heroku
+
+Lauching to Heroku should be extremely easy at this point because we've setup a few items specifically for this step. As long as you have been pushing to github, this should be relatively easy. 
+
+First, make sure you have the Heroku CLI installed and create a Heroku accout. 
+In your terminal window (that is in your application file) run these commands:
+`heroku create`
+When you run this, you should see a few scripts come up in your terminal window. 
+Then `git remote -v`
+You should see something similar to this below if it is working correctly. 
+heroku  https://git.heroku.com/thawing-inlet-61413.git (fetch)
+heroku  https://git.heroku.com/thawing-inlet-61413.git (push)
+
+Lastly, launch
+`git push heroku master`
+If this is successful, you can then add Mongolab from the command line as well. This info will be on your heroku account and on your server.js file. 
+
+If you have any errors use the command `heroku logs` in terminal to see where the build failed. 
+
+Good luck! 
+
+##Special Thank you to: [Dan W. Gross](https://github.com/DanielWGross), and Ed Brennan for helping me understand and create this project. 
+
 
 
 

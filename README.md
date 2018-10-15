@@ -178,7 +178,10 @@ My handleSubmitForm onClick function takes all of the input data from the from o
 Here's the function for the API.nytArticles function. As you can see, this function sets the state for the results so we will see the articles load from the New York Times after this function is called. 
 ![new york times call](loadArticles)
 
-The next function we want to do is to connect to MongoDB and Save some of the articles we like!
+The next function we want to do is to connect to MongoDB and Save some of the articles we like! First, add this code to your server.js file `mongoose.connect(process.env.MONGOLAB_ThisChangesBasedonHeroku_URI ||"mongodb://localhost/Nameofdatabase");` This is just a template. You'll be assigned a unique name from Mongolab and Heroku for the first part(before the ||) and you can name your database whatever you deem appropriate. 
+
+Please note that we already added our save functionality to our utils folder, and to our controller folder. So all we have to do is make an onClick event in our search.js file and call this functionality. 
+
 
 
 

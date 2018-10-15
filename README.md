@@ -146,21 +146,21 @@ Then I connected my controller file to all of my express routes, so that any fil
 ![article.js file in the routes folder](expressRoutes.png)
 
 So all of my API routes (so far) are under /api/article or /api/articles depending on how many articles I'm searching for from MongoDB. 
-I also connected my API routes to my server.js file to ensure it is use and the data and data manipulation is available to all parts of the application. 
+I also connected my API routes to my server.js file to ensure it is use and the data and data manipulation is available to all parts of the application. Here is the code on my server.js file for this part of the application.
+![apiroutes on server.js](serverjsAPI.png)
 
+## Setting the Routes
+When I refer to setting up the routes here, I'm referring to the routes on the express/server-side of the application. These routes are crucial to helping our application pull data, from the New York Times, and push saved articles to our MongoDB database securely. By facilitating our API calls on the server-side, it makes it hard for individuals to find API keys, and other information that could be conneted to a payment source. 
 
-
+Please note that server.js file is the most important file to this application. It's the part of the file that connects both sides (client and server) of the website to work as one fluid application. 
 
 ## connecting to the utils
 
-Now that we have the data coming back from NYT and we know how to target the elements we want, I finally feel like I can create the model for each article to be save to my database. 
+Now that we have the data coming back from NYT and we have our models set up, we can now connect them to the client side and add some functionality to our site. 
 
 
 ## Getting the data in state. 
 This is where it gets tricky. I set up a separate file in my src folder to make onclick events to pull information from the New York Times. I set up a utils folder and in it I have an API.js file. In here, I created a bunch of calls to both MongoDB and to the New York Times. These get and post function are made available with the [npm package AXIOS](https://www.npmjs.com/package/axios). 
-
-## Setting the Routes
-When I refer to setting up the routes here, I'm referring to the routes on the express/server-side of the application. These routes are crucial to helping our application pull data, from the New York Times, and push saved articles to our MongoDB database securely. By facilitating our API calls on the server-side, it makes it hard for individuals to find API keys, and other information that could be conneted to a payment source. 
 
 
 Since I have these functions going to the same route as my NYT calls, I am able to retrieve the information. Here is my file for you to review. 

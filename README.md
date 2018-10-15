@@ -161,8 +161,6 @@ Please note that server.js file is the most important file to this application. 
 
 Now that we have the data coming back from NYT and we have our models set up, we can now connect them to the client side and add some functionality to our site. 
 
-
-## Getting the data in state. 
 This is where it gets tricky. I set up a separate file in my src folder to make onclick events to pull information from the New York Times. I set up a utils folder and in it I have an API.js file. In here, I created a bunch of calls to both MongoDB and to the New York Times. These get and post function are made available with the [npm package AXIOS](https://www.npmjs.com/package/axios). 
 
 
@@ -175,7 +173,14 @@ Next we need to jump into our Search.js folder and insert these functions into o
 First, import these functions into Search.js at the top of the file. My code looks like this:
 `import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. Since we imported all of the routes into our server.js file, the server knows to make the http call using axios library and push and pull (post and get respectively) from those routes because of the connection to server.js, and the onclick function on the search.js file.
 
-My first step here, is to work the data I'm pulling from the New York times and turn that 
+My handleSubmitForm onClick function takes all of the input data from the from on the search.js file and uses it to make the api call to the New York Times. First I stop the browswer window from refreshing with the preventDefault function (so that I don't lose my data. Then I pass the parameters from the form to my API function call by taking the data in the form. By using React's State component, I'm able to use the 'this' keyword and pull the current information/state from the form to use in my API call. Here's what the function looks like:
+![handle form submit funciton](formSubmit) 
+Here's the function for the API.nytArticles function. As you can see, this function sets the state for the results so we will see the articles load from the New York Times after this function is called. 
+![new york times call](loadArticles)
+
+The next function we want to do is to connect to MongoDB and Save some of the articles we like!
+
+
 
 
  

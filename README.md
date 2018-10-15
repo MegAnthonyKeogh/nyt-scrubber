@@ -1,7 +1,7 @@
 # New York Times Article Find and Save
 
 [Test it here](https://agile-tor-19181.herokuapp.com/) 
-This is a MERN (Mongo, Express, React and Node) project that searches The New York Times Search API for articles that meet the search criteria. It also allows the user to save selected articles to a MongoDB database. 
+This is a MERN (Mongo, Express, React and Node) project that searches the New York Times Search API for articles that meet the search criteria. It also allows the user to save selected articles to a MongoDB database. 
 
 Below are step by step instructions to help you recreate the project yourself. If you have questions, please do not hesitate to reach out. 
 
@@ -139,15 +139,16 @@ Once I knew what data I wanted to target coming from NYT, and how I wanted to se
 
 By importing mongoose, I'm able to use the constructor method that comes with mongoose. The constructor function is called a schema (and it is very similar to the schema idea in MySQL). Since all of my keys value pairs are strings, this was an extremely easy model to make. I export the model object as Article because I want all of my article to have these key value pairs. 
 
-Next, I import this model into my controllers file. This is where I built out all of my CRUD (create, update, remove)operations that work with MongoDB. 
+## setting the controller
+Next, I imported this model into my controllers file. This is where I built out all of my CRUD (create, update, remove)operations that work with MongoDB. 
 
-Next, I connect my controller file to all of my express routes, so that any files that are get/posting to these routes (like my API.js file in the utils folder can gain access to these functions. I separated by routes in a way that makes it easier to built new routes into this application in the future. Instead of hard coding each route. All information routes will start with "/api", so that is in my index.js file that connects to my "articles.js" file. Here's the code for those files respectively. 
+Then I connected my controller file to all of my express routes, so that any files that are get/posting to these routes (like my API.js file in the utils folder can gain access to these functions. I separated by routes in a way that makes it easier to built new routes into this application in the future. Instead of hard coding each route. All information routes will start with "/api", so that is in my index.js file that connects to my "articles.js" file. Here's the code for those files respectively. 
 ![index.js file to the routes folder](indexapiroutes.png)
 ![article.js file in the routes folder](expressRoutes.png)
 
 
 
-## setting the controller
+
 
 ## connecting to the utils
 

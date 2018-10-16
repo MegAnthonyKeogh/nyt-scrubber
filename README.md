@@ -174,9 +174,9 @@ First, import these functions into Search.js at the top of the file. My code loo
 `import API from "../../utils/API";` So whenever I use const API, server.js knows to use the function in this file. Since we imported all of the routes into our server.js file, the server knows to make the http call using axios library and push and pull (post and get respectively) from those routes because of the connection to server.js, and the onclick function on the search.js file.
 
 My handleSubmitForm onClick function takes all of the input data from the from on the search.js file and uses it to make the api call to the New York Times. First I stop the browswer window from refreshing with the preventDefault function (so that I don't lose my data. Then I pass the parameters from the form to my API function call by taking the data in the form. By using React's State component, I'm able to use the 'this' keyword and pull the current information/state from the form to use in my API call. Here's what the function looks like:
-![handle form submit funciton](formSubmit) 
+![handle form submit funciton](formSumbit.png) 
 Here's the function for the API.nytArticles function. As you can see, this function sets the state for the results so we will see the articles load from the New York Times after this function is called. 
-![new york times call](loadArticles)
+![new york times call](loadArticles.png)
 
 ## Connecting to Mongo
 The next function we want to do is to connect to MongoDB and Save some of the articles we like! First, add this code to your server.js file `mongoose.connect(process.env.MONGOLAB_ThisChangesBasedonHeroku_URI ||"mongodb://localhost/Nameofdatabase");` This is just a template. You'll be assigned a unique name from Mongolab and Heroku for the first part(before the ||) and you can name your database whatever you deem appropriate. 

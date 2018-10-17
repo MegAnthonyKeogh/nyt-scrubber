@@ -7,7 +7,7 @@ const controller = require("../../controllers/articleController")
 router.route('/articles')
 .get(controller.findAll)
 .post((req,res) => {
-  console.log("IN MEGs POST")
+  
   controller.create(req,res)
 })
 

@@ -1,4 +1,3 @@
-
 const db = require("../models");
 module.exports = {
     findAll: function(req, res) {
@@ -15,22 +14,13 @@ module.exports = {
         .catch(err => res.status(422).json(err))
     },
     create: function (req, res) {
-       console.log("megan")
-       console.log(req.body)
-       console.log("ellie")
        db.Article
         .create(req.body)
         .then(dbModel => {
             console.log("right here")
             console.log(dbModel)
             res.json(dbModel)
-        })
-        
-        .catch(err => {
-            console.log("In create catch")
-            console.log(err)
-            res.status(422).json(err)
-        });
+        })  
     },
     update: function(req, res) {
         db.Article

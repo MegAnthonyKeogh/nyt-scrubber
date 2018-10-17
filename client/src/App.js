@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Search from "../src/pages/Search";
-import NoMatch from "../src/pages/NoMatch";
 import Saved from "../src/pages/Saved";
+
 import Nav from "../src/components/Nav";
+import NoMatch from "../src/pages/NoMatch";
 import { Col, Row, Container } from "../src/components/Grid";
 
 

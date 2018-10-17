@@ -3,6 +3,7 @@ import Jumbotron from "../../components/Jumbotron";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import {List, ListItem } from "../../components/List";
+
 import API from "../../utils/API";
 
 
@@ -79,10 +80,6 @@ class Search extends Component {
          }
         
       
-
-        
-    
-
       handleFormSubmit = event => {
         event.preventDefault();
           API.nytArticles({
@@ -103,24 +100,15 @@ class Search extends Component {
             });
           };
           
-    
-
-
-
-          
-      
-    
 
     render() {
         return ( 
-          <Container>
+          <Container fluid>
             <Container fluid>
         <Row>
           <Col size="md-12">
             <Jumbotron>
             < h1 > New York Times Article Scrubber and Saver </h1> 
-            // Render the newly fetched data inside of this.state.data 
-        
             </Jumbotron> 
            <form>
                <h3> Search Here </h3>
@@ -161,18 +149,11 @@ class Search extends Component {
                     </strong>
                     
                     {
-                      /* 
-                      As the below is to go an external site, it should just be an <a> element
-                      You only need Link when you are using React Router.
-                      */
+                    
                     }
                     <a href={articles.web_url}>Read the Story Here</a>
                     {
-                      /* 
-                      There's no delete button here, rather there should be a SAVE button
-                      I don't know the setup of your component structure.  Below, I have handleSave
-                      as a method of this component class.  You may be passing it as a prop.
-                      */
+                      
                     }
                     <button onClick={() => this.handleSave(articles._id)}>Save</button>
 
@@ -188,8 +169,8 @@ class Search extends Component {
       </Row>
       </Container>
       </Container>
-    
       
+
     )
               }
             }

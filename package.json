@@ -1,10 +1,10 @@
 {
-  "name": "NYTScrubber",
+  "name": "NYT-Scrubber",
   "version": "1.0.0",
   "engines": {
     "node": "10.11.0"
   },
-  "description": "",
+  "description": "Search and save articles from the New York Times",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -25,8 +25,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "express": "^4.16.3",
+    "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
-    "if-env": "^1.0.4"
-    
+    "react-particles-js": "^2.3.0"
   }
 }

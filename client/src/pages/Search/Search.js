@@ -23,7 +23,7 @@ class Search extends Component {
         
 
     }
-    showAlert(){
+    showAlert(event){
       alert("Searching New York Times");
       console.log("show alert was read");
     }
@@ -131,8 +131,8 @@ class Search extends Component {
             onChange = {  this.handleInputChange }
             name = "endyear"
             placeholder = "end year (Optional)" />
-            <button onClick={(event) => {this.showAlert(); 
-            this.handleFormSubmit();}}>
+            <button onClick={(event) => {this.showAlert(event); 
+            this.handleFormSubmit(event);}}>
             Submit </button> 
             </form> 
             </Col>

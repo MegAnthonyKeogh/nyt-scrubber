@@ -3,6 +3,7 @@ import axios from "axios";
 export default {
   // Gets all books
   nytArticles: function(searchParams) {
+    console.log('in utils file nytartists')
     return axios.post('/api/nyt/articles', searchParams );
   },
   getArticles: function(){

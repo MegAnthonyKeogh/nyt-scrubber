@@ -5,6 +5,7 @@ const controller = require("../../controllers/articleController")
 
 
 router.route('/articles')
+//console.log('in the router route get function')
 .get(controller.findAll)
 .post((req,res) => {
   

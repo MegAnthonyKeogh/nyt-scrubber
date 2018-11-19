@@ -23,6 +23,11 @@ class Search extends Component {
         
 
     }
+    showAlert(){
+      alert("Searching New York Times");
+      console.log("show alert was read");
+    }
+   
 
     componentDidMount() {
       API.getArticles()
@@ -80,18 +85,20 @@ class Search extends Component {
          }
         
       
-      handleFormSubmit = event => {
+      handleFormSubmit = (event) => {
         event.preventDefault();
           API.nytArticles({
             query: this.state.query,
             startyear: this.state.startyear,
-            endyear: this.state.endyear
+            endyear: this.state.endyear,
+            
           })
             .then(res => {
                 this.setState({articles: res.data})
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("this is the error" + err));
         }
+        
 
         handleInputChange = event => {
             const { name, value } = event.target;
@@ -120,14 +127,13 @@ class Search extends Component {
             onChange = { this.handleInputChange}
             name = "startyear"
             placeholder = "start year (required)" />
-            <TextArea value = { this.state.endyear }
+            <Input value = { this.state.endyear }
             onChange = {  this.handleInputChange }
             name = "endyear"
             placeholder = "end year (Optional)" />
-            <FormBtn
-            //disabled={!(this.state.search && this.state.title)}
-             onClick={this.handleFormSubmit}>
-            Submit </FormBtn> 
+            <button onClick={(event) => {this.showAlert(); 
+            this.handleFormSubmit();}}>
+            Submit </button> 
             </form> 
             </Col>
             </Row>
@@ -155,7 +161,8 @@ class Search extends Component {
                     {
                       
                     }
-                    <button onClick={() => this.handleSave(articles._id)}>Save</button>
+                    <button onClick={(event) => {this.handleSave(articles._id); 
+                  this.showAlert();}}>Save</button>
 
                   </ListItem>
                 ))

@@ -7,6 +7,7 @@ import Saved from "../src/pages/Saved";
 import Nav from "../src/components/Nav";
 import NoMatch from "../src/pages/NoMatch";
 import { Col, Row, Container } from "../src/components/Grid";
+import Modal from "../src/components/modal";
 
 
 

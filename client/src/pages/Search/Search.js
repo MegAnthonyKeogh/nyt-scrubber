@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
+import Modal from "../../components/modal";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import {List, ListItem } from "../../components/List";
@@ -8,8 +9,10 @@ import API from "../../utils/API";
 
 
 class Search extends Component {
-
-    state = {
+ constructor(props) {
+      super(props);
+  
+    this.state = {
         articles: [],
         response: null,
         id: "",
@@ -20,20 +23,19 @@ class Search extends Component {
          query: "",
          startyear: "",
          endyear: "",
+         isOpen: false
         
-
     }
-    showAlert(event){
-      alert(`Searching for ${this.state.query}`);
-      console.log("show alert was read");
+  }
+  
+    toggleModal = (event) => {
+      event.preventDefault();
+      this.setState({
+        isOpen: !this.state.isOpen
+      });
     }
-
-    showAlertsave(event){
-      alert(`Saving ${this.state.saved[0].headline}`);
-      console.log(`this state save [0] ${this.state.saved[0].headline}`);
-    }
-   
-
+    
+  
     componentDidMount() {
       API.getArticles()
         .then(res => this.setState({saved: res.data}))
@@ -57,8 +59,6 @@ class Search extends Component {
       })
     }
    
-
-
     handleDelete = (id) => {
       API.deleteArticle(id)
         .then(res => {
@@ -116,7 +116,6 @@ class Search extends Component {
     render() {
         return ( 
           <Container fluid>
-            <Container fluid>
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -136,59 +135,61 @@ class Search extends Component {
             onChange = {  this.handleInputChange }
             name = "endyear"
             placeholder = "end year (Optional)" />
-            <button onClick={(event) => {this.showAlert(event); 
+           
+            <button onClick={(event) => {this.handleFormSubmit(event); this.toggleModal(event);
             this.handleFormSubmit(event);}}>
             Submit </button> 
+            <Modal show={this.state.isOpen}
+                      onClose={this.toggleModal}>
+                      `Searching for ${this.state.query}`
+                    </Modal>
             </form> 
             </Col>
             </Row>
-            </Container>
-            
-            <Container fluid>
             <Row>
               <Col size="md-12">
              <Jumbotron>
              < h1 > Results </h1> 
              </Jumbotron> 
-             <div>
         {this.state.articles.length ? (
             <List>
-              { this.state.articles.map(articles => (
+              {this.state.articles.map(articles => (
                   <ListItem key={articles._id}>
                     <strong>
                       { `${articles.headline.main} ${'byline' in articles ? articles.byline.original : ""}` }
                     </strong>
-                    
-                    {
-                    
-                    }
+                
                     <a href={articles.web_url}>Read the Story Here</a>
-                    {
-                      
-                    }
-                    <button onClick={(event) => {this.handleSave(articles._id); 
-                  this.showAlertsave(event);}}>Save</button>
-
+                    <button onClick={(event) => {this.handleSave(articles._id); this.toggleModal(event)}}
+                    >Save</button>
+                    <Modal show={this.state.isOpen}
+                      onClose={this.toggleModal}>
+                      <p>`We're saving ${this.headline} for you`</p>
+                    </Modal>
                   </ListItem>
-                ))
-              }
+                )) }
             </List>
           ) : (
             <h3>No Results to Display</h3>
           )}
+           
+        <div>
+        
+        <button onClick={(event) => this.toggleModal} >
+          Open the modal
+        </button> 
+
+         <Modal show={this.state.isOpen}
+          onClose={this.toggleModal}>
+          `Here's some content for the modal`
+        </Modal>
       </div>
       </Col>
       </Row>
       </Container>
-      </Container>
       
-
-    )
-              }
-            }
+    )}}
             
-
-    
 
 
 export default Search;

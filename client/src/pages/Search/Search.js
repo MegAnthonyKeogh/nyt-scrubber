@@ -24,8 +24,13 @@ class Search extends Component {
 
     }
     showAlert(event){
-      alert("Searching New York Times");
+      alert(`Searching for ${this.state.query}`);
       console.log("show alert was read");
+    }
+
+    showAlertsave(event){
+      alert(`Saving ${this.state.saved[0].headline}`);
+      console.log(`this state save [0] ${this.state.saved[0].headline}`);
     }
    
 
@@ -162,7 +167,7 @@ class Search extends Component {
                       
                     }
                     <button onClick={(event) => {this.handleSave(articles._id); 
-                  this.showAlert();}}>Save</button>
+                  this.showAlertsave(event);}}>Save</button>
 
                   </ListItem>
                 ))

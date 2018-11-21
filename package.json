@@ -1,11 +1,11 @@
 {
-  "name": "NYT-Scrubber",
-  "version": "1.0.0",
+  "name": "yes",
+  "version": "yes",
   "engines": {
-    "node": "10.11.0"
+    "node": "10.13.0"
   },
-  "description": "Search and save articles from the New York Times",
-  "main": "server.js",
+  "description": "yes",
+  "main": "yes",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -16,8 +16,8 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "Megan Anthony",
-  "license": "ISC",
+  "author": "yes",
+  "license": "unlicensed",
   "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
@@ -31,5 +31,7 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
     "react-particles-js": "^2.3.0"
-  }
+  },
+  "repository": "yes",
+  "private": false
 }

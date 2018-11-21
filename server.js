@@ -47,7 +47,7 @@ app.post('/api/nyt/articles', (req, res) => {
 
 app.use(apiRoutes);
 
-mongoose.connect(process.env.MONGOLAB_TEAL_URI ||"mongodb://localhost/nytscrubandsave");
+mongoose.connect("mongodb://ds039017.mlab.com:39017/heroku_05qbs503" ||"mongodb://localhost/nytscrubandsave");
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

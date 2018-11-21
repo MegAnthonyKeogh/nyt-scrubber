@@ -47,8 +47,12 @@ app.post('/api/nyt/articles', (req, res) => {
 
 app.use(apiRoutes);
 
+<<<<<<< HEAD
 mongoose.connect("mongodb://admin:password1@ds039017.mlab.com:39017/heroku_05qbs503" ||"mongodb://localhost/nytscrubandsave")
 
+=======
+mongoose.connect("mongodb://admin:password1@ds039017.mlab.com:39017/heroku_05qbs503" ||"mongodb://localhost/nytscrubandsave");
+>>>>>>> 4af4b3fff884746eda3914245305d22bfc17e87e
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

@@ -118,9 +118,17 @@ class Search extends Component {
           <Container fluid>
         <Row>
           <Col size="md-12">
+          <Modal show={this.state.isOpen}
+                      onClose={this.toggleModal}>
+                      `Searching for {this.state.query}`
+                    </Modal>
             <Jumbotron>
             < h1 > New York Times Article Scrubber and Saver </h1> 
             </Jumbotron> 
+            <Modal show={this.state.isOpen}
+                      onClose={this.toggleModal}>
+                      `Searching for {this.state.query}`
+                    </Modal>
            <form>
                <h3> Search Here </h3>
             <Input value = { this.state.query}
@@ -139,10 +147,10 @@ class Search extends Component {
             <button onClick={(event) => {this.handleFormSubmit(event); this.toggleModal(event);
             this.handleFormSubmit(event);}}>
             Submit </button> 
-            <Modal show={this.state.isOpen}
+            {/* <Modal show={this.state.isOpen}
                       onClose={this.toggleModal}>
-                      `Searching for ${this.state.query}`
-                    </Modal>
+                      `Searching for {this.state.query}`
+                    </Modal> */}
             </form> 
             </Col>
             </Row>

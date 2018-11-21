@@ -27,7 +27,16 @@ class Search extends Component {
         
     }
   }
-  
+  showAlert(event){
+    event.preventDefault();
+    alert(`Searching New York Times for ${this.state.query}`);
+   
+  }
+  showSaveAlert(event){
+    event.preventDefault();
+    alert(`Saving!`);
+   
+  }
     toggleModal = (event) => {
       event.preventDefault();
       this.setState({
@@ -144,8 +153,8 @@ class Search extends Component {
             name = "endyear"
             placeholder = "end year (Optional)" />
            
-            <button onClick={(event) => {this.handleFormSubmit(event); this.toggleModal(event);
-            this.handleFormSubmit(event);}}>
+            <button onClick={(event) => {this.handleFormSubmit(event); //this.toggleModal(event);
+            this.showAlert(event);}}>
             Submit </button> 
             {/* <Modal show={this.state.isOpen}
                       onClose={this.toggleModal}>
@@ -168,11 +177,12 @@ class Search extends Component {
                     </strong>
                 
                     <a href={articles.web_url}>Read the Story Here</a>
-                    <button onClick={(event) => {this.handleSave(articles._id); this.toggleModal(event)}}
+                    <button onClick={(event) => {this.handleSave(articles._id); //this.toggleModal(event)
+                    this.showSaveAlert(event)}}
                     >Save</button>
                     <Modal show={this.state.isOpen}
                       onClose={this.toggleModal}>
-                      <p>`We're saving ${this.headline} for you`</p>
+                      <p>`We're saving this for you`</p>
                     </Modal>
                   </ListItem>
                 )) }
@@ -183,14 +193,7 @@ class Search extends Component {
            
         <div>
         
-        <button onClick={(event) => this.toggleModal} >
-          Open the modal
-        </button> 
-
-         <Modal show={this.state.isOpen}
-          onClose={this.toggleModal}>
-          `Here's some content for the modal`
-        </Modal>
+        
       </div>
       </Col>
       </Row>

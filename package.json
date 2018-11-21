@@ -1,6 +1,6 @@
 {
-  "name": "yes",
-  "version": "0.10",
+  "name": "NYTScrubber",
+  "version": "0.1.0",
   "engines": {
     "node": "10.13.0"
   },

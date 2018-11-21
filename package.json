@@ -1,11 +1,11 @@
 {
   "name": "yes",
-  "version": "yes",
+  "version": "0.10",
   "engines": {
     "node": "10.13.0"
   },
-  "description": "yes",
-  "main": "yes",
+  "description": "search and save articles from the new york times ",
+  "main": "search.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -16,7 +16,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "yes",
+  "author": "Megan Anthony",
   "license": "unlicensed",
   "devDependencies": {
     "concurrently": "^3.5.0",
